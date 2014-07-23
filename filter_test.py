@@ -2,6 +2,7 @@
 __author__ = 'Zhao, Yongjiang'
 
 from TestFilter import TestFilter
+import os
 
 
 def init(filename):
@@ -16,11 +17,17 @@ def init(filename):
     return comments_list
 
 
-if __name__ == "__main__":
+def main():
+    if not os.path.exists("seged_content.txt"):
+        os.system("tf.python")
     clist = init("seged_content.txt")
     comment_filter = TestFilter(clist)
     comment_filter.filter_nums()
     #comment_filter.filter_nonsense()
     comment_filter.filter_ads()
     comment_filter.output()
+
+if __name__ == "__main__":
+    main()
+
 
