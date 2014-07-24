@@ -2,6 +2,7 @@
 __author__ = 'ZhaoYongjiang'
 import re
 from progressbar import progressbar
+import os
 
 
 class TestFilter(object):
@@ -10,6 +11,10 @@ class TestFilter(object):
         self.out_q = list()
         self.file_counter = 0
         self.filter_stopwords()
+        filelist = os.listdir(os.getcwd())
+        for f in filelist:
+            if f[-4:] == ".out":
+                os.remove(f)
 
     @staticmethod
     def init_stopwords():
@@ -58,19 +63,19 @@ class TestFilter(object):
         def nums(job):
             temp = job.split()
             if len(temp) == 2:
-                if re.match(r'\d+', temp[0]):
+                if re.match(r'\w+', temp[0]):
                     pass
                 else:
                     self.out_q.append(job)
             elif len(temp) > 2:
                 self.out_q.append(job)
-        self.filter_template(nums, "remove lines with only numbers.")
+        self.filter_template(nums, "remove lines with only numbers or alphabets.")
         self.output(str(self.file_counter) + ".out")
         return
 
     def filter_ads(self):
-        pattern1 = r'.*(?:微信|QQ|V 信|加扣|加.{0,4}(?:扣|q|Q|qq)).*\d+.*'
-        pattern2 = r'.*(?:互粉|求赞|求 关注|请 关注).*'
+        pattern1 = r'.*(?:微信|QQ|V 信|加.{0,4}(?:扣|q|Q|qq)).*\d+.*'
+        pattern2 = r'.*(?:互粉|求赞|求粉|求 关注|请 关注).*'
         pattern3 = r'.*招.*(?:暑假|寒假|宅家).*适合.*(?:学生|上班族).*'
         self.filter_ad(pattern1)
         self.filter_ad(pattern2)
