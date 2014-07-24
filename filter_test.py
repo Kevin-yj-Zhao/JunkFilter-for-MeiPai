@@ -11,7 +11,6 @@ def init(filename):
     f = open(filename, 'rb')
     reader = f.readlines()
     for line in reader:
-        #comments_list.append(line)
         comments_list.append(line)
     print len(comments_list)
     return comments_list
@@ -23,9 +22,9 @@ def main():
         os.system("tf.py")
     clist = init("seged_content.txt")
     comment_filter = TestFilter(clist)
-    comment_filter.filter_nums()
     #comment_filter.filter_nonsense()
     comment_filter.filter_ads()
+    comment_filter.filter_nums()
     comment_filter.output()
 
 if __name__ == "__main__":
