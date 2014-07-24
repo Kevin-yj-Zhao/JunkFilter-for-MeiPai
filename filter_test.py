@@ -3,6 +3,7 @@ __author__ = 'Zhao, Yongjiang'
 
 from TestFilter import TestFilter
 import os
+import sys
 
 
 def init(filename):
@@ -28,6 +29,8 @@ def main():
     comment_filter.output()
 
 if __name__ == "__main__":
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
     main()
 
 

@@ -57,11 +57,13 @@ class TestFilter(object):
     def filter_nums(self):
         def nums(job):
             temp = job.split()
-            if len(temp) <= 2:
-                if len(temp) < 2:
-                    self.out_q.append(temp)
-                elif re.match(r'\d+', temp[0]):
-                    self.out_q.append(temp)
+            if len(temp) == 2:
+                if re.match(r'\d+', temp[0]):
+                    pass
+                else:
+                    self.out_q.append(job)
+            elif len(temp) > 2:
+                self.out_q.append(job)
         self.filter_template(nums, "remove lines with only numbers.")
         self.output(str(self.file_counter) + ".out")
         return
@@ -103,6 +105,6 @@ class TestFilter(object):
         print "saving ", filename
         f = open(filename, "wb")
         for o in self.in_q:
-            f.write(','.join(o))
+            f.write(o)
         f.close()
         return
