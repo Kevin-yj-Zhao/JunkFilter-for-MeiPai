@@ -74,12 +74,20 @@ class TestFilter(object):
         return
 
     def filter_ads(self):
-        pattern1 = r'.*(?:微信|QQ|V 信|加.{0,4}(?:扣|q|Q|qq)).*\d+.*'
-        pattern2 = r'.*(?:互粉|求赞|求粉|求 关注|请 关注).*'
-        pattern3 = r'.*招.*(?:暑假|寒假|宅家).*适合.*(?:学生|上班族).*'
+        pattern1 = r'.*(?:关注|微信|wechat|WX|QQ|V 信|加.{0,4}(?:扣|q|Q|qq)).*\d+.*'
+        pattern2 = r'.*(?:互粉|求赞|求粉|求 关注|请 关注|(?:加|加个).{0,4}关注|关注.{0,4}我).*'
+        pattern3 = r'.*(?:招|聘).*(?:暑假|寒假|宅家).*适合.*(?:学生|上班族).*'
+        #pattern4 = r'.*A.{0,4}片.*加.*'
+        pattern5 = r'.*職小時工.*'
+        pattern6 = r'.*(?:工钱|日结|工资).*(?:小时|咨询).*(?:咨询|详情|详细).*'
+        pattern7 = r'.*(?:学生|上班族).*(?:上班族|学生).*'
         self.filter_ad(pattern1)
         self.filter_ad(pattern2)
         self.filter_ad(pattern3)
+        #self.filter_ad(pattern4)
+        self.filter_ad(pattern5)
+        self.filter_ad(pattern6)
+        self.filter_ad(pattern7)
         return
 
     def filter_ad(self, pattern):
