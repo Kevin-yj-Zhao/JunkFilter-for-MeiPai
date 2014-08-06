@@ -20,7 +20,7 @@ def init(filename):
 def main():
     if not os.path.exists("seged_content.txt"):
         print "running tf.py to get segmentation results."
-        os.system("tf.py")
+        os.system("tf.py testcomments.txt")
     clist = init("seged_content.txt")
     comment_filter = TestFilter(clist)
     #comment_filter.filter_nonsense()

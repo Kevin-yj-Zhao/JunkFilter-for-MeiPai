@@ -67,6 +67,7 @@ def segment(content):
 if __name__ == "__main__":
     reload(sys)
     sys.setdefaultencoding("utf-8")
-    clist = init("content.txt")
+    #clist = init("content.txt")
+    clist = init(sys.argv[1])
     #process(clist)
     segment(clist)
