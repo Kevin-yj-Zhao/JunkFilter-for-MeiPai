@@ -1,5 +1,5 @@
 #--*- encoding: utf-8 -*--
-__author__ = 'Zhao Yongjiang'
+__author__ = 'Zhao, Yongjiang'
 import os
 import random
 

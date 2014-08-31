@@ -1,5 +1,5 @@
 # --*- encoding: utf-8 -*--
-__author__ = 'ZhaoYongjiang'
+__author__ = 'Zhao, Yongjiang'
 import re
 from progressbar import progressbar
 import os
