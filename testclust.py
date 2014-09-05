@@ -42,8 +42,7 @@ def process(directory):
     f.close()
 
 
-if __name__ == "__main__":
-    #process("Jingdong_NB_4000")
+def sampleingnegtivedata():
     data = loadDataSet("content.txt")
     res = RandomSampling(data, 4000)
     f = open("sampledjcomment.txt", 'wb')
@@ -53,3 +52,22 @@ if __name__ == "__main__":
         except:
             pass
     f.close()
+
+def main():
+    sampleingnegtivedata()
+    fo = open("testpredict.txt", 'wb')
+    fp = open("jdcomment.txt", 'rb')
+    for line in fp.readlines():
+        fo.write(''.join(['1\t', line]))
+    fp.close()
+    fn = open("sampledjcomment.txt", 'rb')
+    for line in fn.readlines():
+        fo.write(''.join(['-1\t', line]))
+    fn.close()
+    fo.close()
+
+
+if __name__ == "__main__":
+    #process("Jingdong_NB_4000")
+    main()
+
